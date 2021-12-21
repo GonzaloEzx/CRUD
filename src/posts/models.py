@@ -1,0 +1,38 @@
+from django.db import models
+
+class Post(models.Model):
+	title = models.CharField(max_length=50)
+	content = models.TextField()
+	thumbnail = models.ImageField()
+	publish_date = models.TimeField(auto_now_add=True)
+	last_updated = models.TimeField(auto_now=True)
+	# author = models.ForeingKey()
+
+	def __str__(self):
+		return self.title
+	
+class Comment(models.Model):
+	# user = models.ForeingKey()
+	post = models.ForeignKey(Post, on_delete=models.CASCADE)
+	timestamp = models.TimeField(auto_now_add=False)
+	content = models.TextField()
+
+	def __str__(self):
+		return self.user.username
+	
+
+class PostView(models.Model):
+	# user = models.ForeingKey()
+	post = models.ForeignKey(Post, on_delete=models.CASCADE)
+	timestamp = models.TimeField(auto_now_add=False)
+
+	def __str__(self):
+		return self.user.username
+
+
+class Like(models.Model):
+	# user = models.ForeingKey()
+	post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.user.username
