@@ -125,6 +125,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
+AUTH_USER_MODEL = 'posts.User'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
