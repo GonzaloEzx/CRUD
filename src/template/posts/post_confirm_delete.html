@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+		<h1>Seguro deseas borrar esto?</h1>
+		<form method="POST">
+			{% csrf_token %}
+			<button class='btn btn-primary' type='submit'>Confirm</button>
+		</form>
+{% endblock content %}
