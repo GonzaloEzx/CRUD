@@ -2,17 +2,21 @@
 
 {% block content %}
 	<div class="conteiner">
+		<div class="row">
 		{% for object in object_list %}
-			<a href="#">
-			<div class="card" style="width: 18rem;">
-				<img src="{{object.thumbnail.url}}" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">{{object.title}}</h5>
-					<p class="card-text">{{object.content|truncatechars:40}}</p>
-					
+			<div class="col-3">
+				<a href="{{object.get_absolute_url}}">
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top" src="{{object.thumbnail.url}}">
+					<div class="card-body">
+						<h5 class="card-title">{{object.title}}</h5>
+						<p class="card-text">{{object.content|truncatechars:40}}</p>
+						
+					</div>
 				</div>
+				</a>
 			</div>
-			</a>
 		{% endfor %}
+		</div>
 	</div>
 {% endblock content %}
